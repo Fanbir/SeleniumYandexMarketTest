@@ -16,9 +16,9 @@ public class MarketPage extends HomePage {
     private static final By cityСhoiceList = By.xpath("//div[@class='region-suggest__list suggest2__content suggest2__content_theme_normal']//strong");
     private static final By cityСonfirmationButton = By.xpath("//*[contains(@class,'region-select-form__continue-with-new')]");
 
-    private static final By searchInMarketFieldElement = By.xpath(".//*[@id='header-search']");
     private static final By searchInMarketButtonElement = By.xpath("//*[contains(text(),'Найти')]/parent::button");
-    private static final By finalSearchElement = By.xpath("//div[@class='n-title__text']/h1");
+
+
 
     private static final String cityMOSCOW = "Москва";
 
@@ -41,17 +41,7 @@ public class MarketPage extends HomePage {
         return new ElectronicsCatalogPage();
     }
 
-    public void insertStringForSearch(String name){
-        driver.findElement(searchInMarketFieldElement).sendKeys(name);
-    }
-
     public void clickButtonForSearch() {
         driver.findElement(searchInMarketButtonElement).click();
-    }
-
-    public String resultSearch(){
-        String name = driver.findElement(finalSearchElement).getText();
-        logger.info("Наименование НАЙДЕННОГО элемента " + name + "\n");
-        return name;
     }
 }

@@ -15,7 +15,7 @@ public class MarketTest extends BaseTest {
 
     private static final int RESULT_COUNT_LIST = 12;
     private static final int PRICE_TV_FROM = 20000;
-    private static final int PRICE_HEADPHONES_FROM = 5000;
+    private static final int PRICE_HEADPHONES_FROM = 15000;
     private static final String YANDEX_PAGE_URL = "https://yandex.ru/";
 
     @BeforeTest
@@ -47,11 +47,11 @@ public class MarketTest extends BaseTest {
 
         Assert.assertTrue("Найдено 12 результатов", electronicsPage.getNumOfResults()==RESULT_COUNT_LIST);
 
-        String nameFirstElement = electronicsPage.nameOfFirstResult();
-        marketPage.insertStringForSearch(nameFirstElement);
+        String nameFirstElement = catalogTvPage.nameOfFirstTvResult();
+        catalogTvPage.insertStringForSearch(nameFirstElement);
         marketPage.clickButtonForSearch();
 
-        Assert.assertEquals(marketPage.resultSearch(),nameFirstElement);
+        Assert.assertEquals(catalogTvPage.resultSearchTvElement(),nameFirstElement);
     }
 
 
@@ -71,11 +71,13 @@ public class MarketTest extends BaseTest {
         electronicsPage.goToSearch();
         Assert.assertTrue("Найдено 12 результатов", electronicsPage.getNumOfResults()==RESULT_COUNT_LIST);
 
-        String nameFirstElement = electronicsPage.nameOfFirstResult();
-        marketPage.insertStringForSearch(nameFirstElement);
+        String nameFirstElement = catalogHeadPhonesPage.nameOfFirstHeadResult();
+        String nameFirstSearchElement = catalogHeadPhonesPage.editHeadPhonesTitle();
+
+        catalogHeadPhonesPage.insertStringForSearch(nameFirstSearchElement);
         marketPage.clickButtonForSearch();
 
-        Assert.assertEquals(marketPage.resultSearch(),nameFirstElement);
+        Assert.assertEquals(catalogHeadPhonesPage.resultSearchHeadPhones(),nameFirstElement);
     }
 
 }

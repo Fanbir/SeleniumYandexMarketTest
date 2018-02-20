@@ -16,8 +16,6 @@ public class ElectronicsCatalogPage extends HomePage {
     private static final By filterButtonElement = By.xpath("//a[contains(text(),'Перейти ко всем фильтрам')]");
     private static final By searchButton = By.xpath("//span[@class='button__text'][contains(text(),'Показать подходящие')]/parent::a");
     private static final String element_LIST_XPATH = "//div[@class='price']";
-    private static final By firstResultElement = By.xpath("//div[contains(@class,'n-snippet-card2__title')]//a");
-
 
     public CatalogTvPage clickToTvItem() {
         logger.info("Переход в 'Телевизоры' ");
@@ -52,12 +50,6 @@ public class ElectronicsCatalogPage extends HomePage {
         List<WebElement> TelevisionModelList = driver.findElements(By.xpath(element_LIST_XPATH));
         logger.info("Всего устройств отображено на странице: " + TelevisionModelList.size() + "\n");
         return TelevisionModelList.size();
-    }
-
-    public String nameOfFirstResult() {
-        String name = driver.findElement(firstResultElement).getText();
-        logger.info("Наименование первого элемента списка " + name + "\n");
-        return name;
     }
 
 }
