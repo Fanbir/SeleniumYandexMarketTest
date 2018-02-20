@@ -18,6 +18,10 @@ public class MarketPage extends HomePage {
 
     private static final By searchInMarketButtonElement = By.xpath("//*[contains(text(),'Найти')]/parent::button");
 
+    private static final By firstResultElement = By.xpath("//div[@class='n-snippet-card2__title']//a");
+    private static final By searchInMarketFieldElement = By.xpath(".//*[@id='header-search']");
+    private static final By finalSearchElement = By.xpath("//div[@class='n-title__text']/h1");
+
 
 
     private static final String cityMOSCOW = "Москва";
@@ -44,4 +48,23 @@ public class MarketPage extends HomePage {
     public void clickButtonForSearch() {
         driver.findElement(searchInMarketButtonElement).click();
     }
+
+    public String nameOfFirstResult() {
+        String name = driver.findElement(firstResultElement).getText();
+        logger.info("Наименование первого элемента списка " + name + "\n");
+        return name;
+    }
+
+    public void insertStringForSearch(String name){
+        driver.findElement(searchInMarketFieldElement).sendKeys(name);
+    }
+
+    public String resultSearchElement(){
+        String name = driver.findElement(finalSearchElement).getText();
+        logger.info("Наименование НАЙДЕННОГО элемента " + name + "\n");
+        return name;
+    }
+
+
+
 }

@@ -16,6 +16,10 @@ public class ElectronicsCatalogPage extends HomePage {
     private static final By filterButtonElement = By.xpath("//a[contains(text(),'Перейти ко всем фильтрам')]");
     private static final By searchButton = By.xpath("//span[@class='button__text'][contains(text(),'Показать подходящие')]/parent::a");
     private static final String element_LIST_XPATH = "//div[@class='price']";
+    private static final By sortedElementCostButton = By.xpath("//*[contains(@class,'n-filter-sorter__link') and text()='по цене']");
+    private static final By setElementVeiwButton = By.xpath("//*[contains(@class,'radio-button__radio_side_right')]");
+
+
 
     public CatalogTvPage clickToTvItem() {
         logger.info("Переход в 'Телевизоры' ");
@@ -52,4 +56,13 @@ public class ElectronicsCatalogPage extends HomePage {
         return TelevisionModelList.size();
     }
 
+    public void sortedElementCost() {
+        logger.info("Клик на фильтр сортировки");
+        driver.findElement(sortedElementCostButton).click();
+    }
+
+    public void setElementVeiw() {
+        logger.info("Отображение элеменентов списком");
+        driver.findElement(setElementVeiwButton).click();
+    }
 }

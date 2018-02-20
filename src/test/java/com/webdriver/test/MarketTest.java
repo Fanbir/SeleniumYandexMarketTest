@@ -15,7 +15,7 @@ public class MarketTest extends BaseTest {
 
     private static final int RESULT_COUNT_LIST = 12;
     private static final int PRICE_TV_FROM = 20000;
-    private static final int PRICE_HEADPHONES_FROM = 300;
+    private static final int PRICE_HEADPHONES_FROM = 5000;
     private static final String YANDEX_PAGE_URL = "https://yandex.ru/";
 
     @BeforeTest
@@ -37,6 +37,8 @@ public class MarketTest extends BaseTest {
         marketPage.selectElectronicsCatalog();
 
         electronicsPage.clickToTvItem();
+        electronicsPage.sortedElementCost();
+        electronicsPage.setElementVeiw();
         electronicsPage.goToFullSearch();
         electronicsPage.setPriceFrom(PRICE_TV_FROM);
 
@@ -47,11 +49,11 @@ public class MarketTest extends BaseTest {
 
         Assert.assertTrue("Найдено 12 результатов", electronicsPage.getNumOfResults()==RESULT_COUNT_LIST);
 
-        String nameFirstElement = catalogTvPage.nameOfFirstTvResult();
-        catalogTvPage.insertStringForSearch(nameFirstElement);
+        String nameFirstElement = marketPage.nameOfFirstResult();
+        marketPage.insertStringForSearch(nameFirstElement);
         marketPage.clickButtonForSearch();
 
-        Assert.assertEquals(catalogTvPage.resultSearchTvElement(),nameFirstElement);
+        Assert.assertEquals(marketPage.resultSearchElement(),nameFirstElement);
     }
 
 
@@ -63,6 +65,8 @@ public class MarketTest extends BaseTest {
         marketPage.selectElectronicsCatalog();
 
         electronicsPage.clickHeadphonesItem();
+        electronicsPage.sortedElementCost();
+        electronicsPage.setElementVeiw();
         electronicsPage.goToFullSearch();
         electronicsPage.setPriceFrom(PRICE_HEADPHONES_FROM);
 
@@ -71,13 +75,12 @@ public class MarketTest extends BaseTest {
         electronicsPage.goToSearch();
         Assert.assertTrue("Найдено 12 результатов", electronicsPage.getNumOfResults()==RESULT_COUNT_LIST);
 
-        String nameFirstElement = catalogHeadPhonesPage.nameOfFirstHeadResult();
-        String nameFirstSearchElement = catalogHeadPhonesPage.editHeadPhonesTitle();
+        String nameFirstElement = marketPage.nameOfFirstResult();
 
-        catalogHeadPhonesPage.insertStringForSearch(nameFirstSearchElement);
+        marketPage.insertStringForSearch(nameFirstElement);
         marketPage.clickButtonForSearch();
 
-        Assert.assertEquals(catalogHeadPhonesPage.resultSearchHeadPhones(),nameFirstElement);
+        Assert.assertEquals(marketPage.resultSearchElement(),nameFirstElement);
     }
 
 }
