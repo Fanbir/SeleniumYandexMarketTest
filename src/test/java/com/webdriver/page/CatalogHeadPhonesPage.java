@@ -14,8 +14,8 @@ public class CatalogHeadPhonesPage extends HomePage{
   private static final By beatsCheckbox = By.xpath("//label[@class='checkbox__label' and contains(text(), 'Beats')]");
   private static final By firstResultHeadphonesElement = By.xpath("//div[@class='n-snippet-cell2__title']//a");
   private static final By searchInMarketHeadPhonesFieldElement = By.xpath(".//*[@id='header-search']");
-  private static final By searchInMarketHeadPhonesTovar = By.xpath("//div[2][@class='suggest2__group']//ul[contains(@class,'suggest2__items')]");
   private static final By finalSearchHeadElement = By.xpath("//div[@class='n-title__text']/h1");
+  private static final By searchInMarketHeadPhonesdElement = By.xpath("//div[@class='suggest2-group-title__content' and contains(text(),'товар')]//ancestor::div[@class='suggest2__group']//ul//a");
 
   public void selectHeadPhonesBeats() {
     logger.info("Выделение чекбокса 'Beats' ");
@@ -37,6 +37,8 @@ public class CatalogHeadPhonesPage extends HomePage{
 
   public void insertStringForSearch(String name) {
     driver.findElement(searchInMarketHeadPhonesFieldElement).sendKeys(name);
+    driver.findElement(searchInMarketHeadPhonesdElement).isDisplayed();
+
   }
 
   public String resultSearchHeadPhones(){

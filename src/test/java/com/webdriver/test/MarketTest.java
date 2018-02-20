@@ -15,7 +15,7 @@ public class MarketTest extends BaseTest {
 
     private static final int RESULT_COUNT_LIST = 12;
     private static final int PRICE_TV_FROM = 20000;
-    private static final int PRICE_HEADPHONES_FROM = 15000;
+    private static final int PRICE_HEADPHONES_FROM = 300;
     private static final String YANDEX_PAGE_URL = "https://yandex.ru/";
 
     @BeforeTest
