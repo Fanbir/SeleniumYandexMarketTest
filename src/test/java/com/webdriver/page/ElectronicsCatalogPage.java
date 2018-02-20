@@ -12,10 +12,10 @@ public class ElectronicsCatalogPage extends HomePage {
 
     private static final By priceFromField = By.id("glf-pricefrom-var");
     private static final By tvItem = By.xpath("//a[contains(@class,'catalog-menu__list-item metrika') and text()='Телевизоры']");
-    private static final By headphonesItem = By.xpath("//a[contains(@class,'catalog-menu__list-item metrika') and text()='Наушники и Bluetooth-гарнитуры']");
+    private static final By headphonesItem = By.xpath("//div[@class='catalog-menu__list']/a[@class='link catalog-menu__list-item metrika i-bem metrika_js_inited'][contains(text(),'Наушники')]");
     private static final By filterButtonElement = By.xpath("//a[contains(text(),'Перейти ко всем фильтрам')]");
     private static final By searchButton = By.xpath("//span[@class='button__text'][contains(text(),'Показать подходящие')]/parent::a");
-    private static final String element_LIST_XPATH = "//*[contains(@class,'n-snippet-card2__title')]";
+    private static final String element_LIST_XPATH = "//div[@class='price']";
     private static final By firstResultElement = By.xpath("//div[contains(@class,'n-snippet-card2__title')]//a");
 
 

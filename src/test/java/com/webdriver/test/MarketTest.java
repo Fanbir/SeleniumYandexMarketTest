@@ -59,7 +59,6 @@ public class MarketTest extends BaseTest {
     public void yandexMarketHeadPhonesTest() {
         homePage.openPage(YANDEX_PAGE_URL);
         homePage.navigateToMarket();
-
         marketPage.selectCityLocalization();
         marketPage.selectElectronicsCatalog();
 
