@@ -7,80 +7,80 @@ import org.testng.annotations.Test;
 
 public class MarketTest extends BaseTest {
 
-    private HomePage homePage;
-    private MarketPage marketPage;
-    private CatalogTvPage catalogTvPage;
-    private CatalogHeadPhonesPage catalogHeadPhonesPage;
-    private ElectronicsCatalogPage electronicsPage;
+  private HomePage homePage;
+  private MarketPage marketPage;
+  private CatalogTvPage catalogTvPage;
+  private CatalogHeadPhonesPage catalogHeadPhonesPage;
+  private ElectronicsCatalogPage electronicsPage;
 
-    private static final int RESULT_COUNT_LIST = 12;
-    private static final int PRICE_TV_FROM = 20000;
-    private static final int PRICE_HEADPHONES_FROM = 5000;
-    private static final String YANDEX_PAGE_URL = "https://yandex.ru/";
+  private static final int RESULT_COUNT_LIST = 12;
+  private static final int PRICE_TV_FROM = 20000;
+  private static final int PRICE_HEADPHONES_FROM = 5000;
+  private static final String YANDEX_PAGE_URL = "https://yandex.ru/";
 
-    @BeforeTest
-    public void SetUp() {
-        super.SetUp();
-        homePage = new HomePage();
-        marketPage = new MarketPage();
-        electronicsPage = new ElectronicsCatalogPage();
-        catalogTvPage = new CatalogTvPage();
-        catalogHeadPhonesPage = new CatalogHeadPhonesPage();
-    }
+  @BeforeTest
+  public void SetUp() {
+    super.SetUp();
+    homePage = new HomePage();
+    marketPage = new MarketPage();
+    electronicsPage = new ElectronicsCatalogPage();
+    catalogTvPage = new CatalogTvPage();
+    catalogHeadPhonesPage = new CatalogHeadPhonesPage();
+  }
 
-    @Test
-    public void yandexMarketTvTest() {
-        homePage.openPage(YANDEX_PAGE_URL);
-        homePage.navigateToMarket();
+  @Test
+  public void yandexMarketTvTest() {
+    homePage.openPage(YANDEX_PAGE_URL);
+    homePage.navigateToMarket();
 
-        //marketPage.selectCityLocalization();
-        marketPage.selectElectronicsCatalog();
+    //marketPage.selectCityLocalization();
+    marketPage.selectElectronicsCatalog();
 
-        electronicsPage.clickToTvItem();
-        electronicsPage.sortedElementCost();
-        electronicsPage.setElementVeiw();
-        electronicsPage.goToFullSearch();
-        electronicsPage.setPriceFrom(PRICE_TV_FROM);
+    electronicsPage.clickToTvItem();
+    electronicsPage.sortedElementCost();
+    electronicsPage.setElementVeiw();
+    electronicsPage.goToFullSearch();
+    electronicsPage.setPriceFrom(PRICE_TV_FROM);
 
-        catalogTvPage.selectTvLG();
-        catalogTvPage.selectTvSamsung();
+    catalogTvPage.selectTvLG();
+    catalogTvPage.selectTvSamsung();
 
-        electronicsPage.goToSearch();
+    electronicsPage.goToSearch();
 
-        Assert.assertTrue("Найдено 12 результатов", electronicsPage.getNumOfResults()==RESULT_COUNT_LIST);
+    Assert.assertTrue("Найдено 12 результатов", electronicsPage.getNumOfResults() == RESULT_COUNT_LIST);
 
-        String nameFirstElement = marketPage.nameOfFirstResult();
-        marketPage.insertStringForSearch(nameFirstElement);
-        marketPage.clickButtonForSearch();
+    String nameFirstElement = marketPage.nameOfFirstResult();
+    marketPage.insertStringForSearch(nameFirstElement);
+    marketPage.clickButtonForSearch();
 
-        Assert.assertEquals(marketPage.resultSearchElement(),nameFirstElement);
-    }
+    Assert.assertEquals(marketPage.resultSearchElement(), nameFirstElement);
+  }
 
 
-    @Test
-    public void yandexMarketHeadPhonesTest() {
-        homePage.openPage(YANDEX_PAGE_URL);
-        homePage.navigateToMarket();
+  @Test
+  public void yandexMarketHeadPhonesTest() {
+    homePage.openPage(YANDEX_PAGE_URL);
+    homePage.navigateToMarket();
 //        marketPage.selectCityLocalization();
-        marketPage.selectElectronicsCatalog();
+    marketPage.selectElectronicsCatalog();
 
-        electronicsPage.clickHeadphonesItem();
-        electronicsPage.sortedElementCost();
-        electronicsPage.setElementVeiw();
-        electronicsPage.goToFullSearch();
-        electronicsPage.setPriceFrom(PRICE_HEADPHONES_FROM);
+    electronicsPage.clickHeadphonesItem();
+    electronicsPage.sortedElementCost();
+    electronicsPage.setElementVeiw();
+    electronicsPage.goToFullSearch();
+    electronicsPage.setPriceFrom(PRICE_HEADPHONES_FROM);
 
-        catalogHeadPhonesPage.selectHeadPhonesBeats();
+    catalogHeadPhonesPage.selectHeadPhonesBeats();
 
-        electronicsPage.goToSearch();
-        Assert.assertTrue("Найдено 12 результатов", electronicsPage.getNumOfResults()==RESULT_COUNT_LIST);
+    electronicsPage.goToSearch();
+    Assert.assertTrue("Найдено 12 результатов", electronicsPage.getNumOfResults() == RESULT_COUNT_LIST);
 
-        String nameFirstElement = marketPage.nameOfFirstResult();
+    String nameFirstElement = marketPage.nameOfFirstResult();
 
-        marketPage.insertStringForSearch(nameFirstElement);
-        marketPage.clickButtonForSearch();
+    marketPage.insertStringForSearch(nameFirstElement);
+    marketPage.clickButtonForSearch();
 
-        Assert.assertEquals(marketPage.resultSearchElement(),nameFirstElement);
-    }
+    Assert.assertEquals(marketPage.resultSearchElement(), nameFirstElement);
+  }
 
 }
