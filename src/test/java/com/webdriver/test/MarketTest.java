@@ -33,7 +33,7 @@ public class MarketTest extends BaseTest {
         homePage.openPage(YANDEX_PAGE_URL);
         homePage.navigateToMarket();
 
-        marketPage.selectCityLocalization();
+        //marketPage.selectCityLocalization();
         marketPage.selectElectronicsCatalog();
 
         electronicsPage.clickToTvItem();
@@ -59,7 +59,7 @@ public class MarketTest extends BaseTest {
     public void yandexMarketHeadPhonesTest() {
         homePage.openPage(YANDEX_PAGE_URL);
         homePage.navigateToMarket();
-        marketPage.selectCityLocalization();
+//        marketPage.selectCityLocalization();
         marketPage.selectElectronicsCatalog();
 
         electronicsPage.clickHeadphonesItem();
