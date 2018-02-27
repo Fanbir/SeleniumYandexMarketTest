@@ -5,9 +5,6 @@ import org.openqa.selenium.WebElement;
 
 import static com.webdriver.utils.SeleniumWebDrivers.driver;
 
-/**
- * @author Artem Nekrasov
- */
 public class CheckBoxElement {
 
     public static void selectCheckBox(By bySelector) {
